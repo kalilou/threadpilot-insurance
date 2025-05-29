@@ -11,3 +11,17 @@ spring:
 
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
+
+logging:
+  level:
+    root: "info"
+    org.springframework.web: "debug"
+    org.hibernate: "error"
+
+togglz:
+  console:
+    enabled: true
+    path: /togglz-console
+    secured: false
+  feature-enums:
+    - com.threadpilot.insurance.config.Features

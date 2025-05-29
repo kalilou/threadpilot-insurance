@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: kalilou_d
+      changes:
+        - createTable:
+            tableName: promotion
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: discount
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: validity
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: kalilou_d
+      changes:
+        - insert:
+            tableName: promotion
+            columns:
+              - column: { name: discount, value: 10 }
+              - column: { name: validity, value: "2025-11-28" }
+              - column: { name: description, value: "Black Friday" }

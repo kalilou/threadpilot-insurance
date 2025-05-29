@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: kalilou_d
+      changes:
+        - insert:
+            tableName: promotion
+            columns:
+              - column: { name: discount, value: 12 }
+              - column: { name: validity, value: "2025-12-20" }
+              - column: { name: description, value: "Goteborg City Promotion" }
