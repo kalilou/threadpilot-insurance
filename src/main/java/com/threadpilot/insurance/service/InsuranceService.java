@@ -40,7 +40,7 @@ public class InsuranceService {
     @Value("${vehicle.service.base-url}")
     private String vehicleServiceBaseUrl;
 
-    public InsuranceResponse getInsurancesByPersonalId(String personalId) {
+    public InsuranceResponse getInsurancesByOwnerNumber(String personalId) {
         List<Insurance> insurances = insuranceRepository.findByInsuranceOwnerNumber(personalId);
         InsuranceResponse insuranceResponse = new InsuranceResponse(personalId, insurances);
 
@@ -92,13 +92,13 @@ public class InsuranceService {
         }
 
         String url = vehicleServiceBaseUrl + personalId;
-        ResponseEntity<List<VehicleInfo>> response = restTemplate.exchange(
+        ResponseEntity<List<Vehicle>> response = restTemplate.exchange(
                 url,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<VehicleInfo>>() {
+                new ParameterizedTypeReference<List<Vehicle>>() {
                 });
-        List<VehicleInfo> vehicles = response.getBody();
+        List<Vehicle> vehicles = response.getBody();
 
         if (vehicles != null && !vehicles.isEmpty()) {
             insuranceResponse.setVehicles(vehicles);

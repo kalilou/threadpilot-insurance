@@ -41,6 +41,7 @@ class InsuranceServiceTest {
         Insurance insurance;
         Customer customer;
 
+        @SuppressWarnings("unchecked")
         @BeforeEach
         void setup() {
                 insurance = new Insurance();
@@ -62,7 +63,7 @@ class InsuranceServiceTest {
                 when(featureManager.isActive(Features.STOCKHOLM_INSURANCE_DISCOUNT)).thenReturn(false);
                 when(featureManager.isActive(Features.GOTEBORG_INSURANCE_DISCOUNT)).thenReturn(false);
 
-                InsuranceResponse response = insuranceService.getInsurancesByPersonalId("199001011001");
+                InsuranceResponse response = insuranceService.getInsurancesByOwnerNumber("199001011001");
                 assertEquals(10.0, response.getInsurances().get(0).getDiscount());
                 assertEquals(90.0, response.getInsurances().get(0).getInsurancePrice());
                 assertNull(response.getPromotion());
@@ -96,7 +97,7 @@ class InsuranceServiceTest {
                 doReturn(Optional.of(promo)).when(promotionRepository)
                                 .findFirstByDescriptionOrderByValidityDesc("Stockholm City Promotion");
 
-                InsuranceResponse response = insuranceService.getInsurancesByPersonalId("199001011001");
+                InsuranceResponse response = insuranceService.getInsurancesByOwnerNumber("199001011001");
                 assertEquals(5.0, response.getInsurances().get(0).getDiscount());
                 assertEquals(95.0, response.getInsurances().get(0).getInsurancePrice());
                 assertTrue(response.getPromotion().contains("Stockholm City Promotion"));
@@ -127,7 +128,7 @@ class InsuranceServiceTest {
                 doReturn(Optional.of(promo)).when(promotionRepository)
                                 .findFirstByDescriptionOrderByValidityDesc("Goteborg City Promotion");
 
-                InsuranceResponse response = insuranceService.getInsurancesByPersonalId("199002022002");
+                InsuranceResponse response = insuranceService.getInsurancesByOwnerNumber("199002022002");
                 assertEquals(5.0, response.getInsurances().get(0).getDiscount());
                 assertEquals(95.0, response.getInsurances().get(0).getInsurancePrice());
                 assertTrue(response.getPromotion().contains("Goteborg City Promotion"));
@@ -148,7 +149,7 @@ class InsuranceServiceTest {
                 when(promotionRepository.findFirstByDescriptionOrderByValidityDesc("Black Friday"))
                                 .thenReturn(Optional.of(promo));
 
-                InsuranceResponse response = insuranceService.getInsurancesByPersonalId("199001011001");
+                InsuranceResponse response = insuranceService.getInsurancesByOwnerNumber("199001011001");
                 assertTrue(response.getPromotion().contains("Black Friday"));
         }
 
@@ -157,7 +158,7 @@ class InsuranceServiceTest {
                 when(insuranceRepository.findByInsuranceOwnerNumber(anyString())).thenReturn(List.of(insurance));
                 when(featureManager.isActive(any())).thenReturn(false);
 
-                InsuranceResponse response = insuranceService.getInsurancesByPersonalId("199001011001");
+                InsuranceResponse response = insuranceService.getInsurancesByOwnerNumber("199001011001");
                 assertEquals(0.0, response.getInsurances().get(0).getDiscount());
                 assertEquals(100.0, response.getInsurances().get(0).getInsurancePrice());
                 assertNull(response.getPromotion());
