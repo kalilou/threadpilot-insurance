@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '3.2.5'
     id 'io.spring.dependency-management' version '1.1.4'
     id 'java'
+    id "org.sonarqube" version "4.4.1.3373"
 }
 
 group = 'com.threadpilot'
@@ -9,6 +10,17 @@ version = '0.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "threadpilot-insurance"
+        property "sonar.projectName", "Insurance Service"
+        property "sonar.organization", "threadpilot"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.token", "sqp_751e96507f23ee4f6dc91a16888c728b91d4a821"
+        property "sonar.gradle.skipCompile", "true"
+    }
 }
 
 dependencies {
