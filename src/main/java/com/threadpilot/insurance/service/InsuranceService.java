@@ -40,6 +40,8 @@ public class InsuranceService {
     @Value("${vehicle.service.base-url}")
     private String vehicleServiceBaseUrl;
 
+    private static final String promoFormat = "%s - %d%% off, valid until %s";
+
     public InsuranceResponse getInsurancesByOwnerNumber(String personalId) {
         List<Insurance> insurances = insuranceRepository.findByInsuranceOwnerNumber(personalId);
         InsuranceResponse insuranceResponse = new InsuranceResponse(personalId, insurances);
@@ -57,8 +59,8 @@ public class InsuranceService {
                                 promotionRepository
                                         .findFirstByDescriptionOrderByValidityDesc("Stockholm City Promotion")
                                         .ifPresent(promo -> {
-                                            String promoInfo = String.format("%s - %d%% off, valid until %s",
-                                                    promo.getDescription(), promo.getDiscount(), promo.getValidity());
+                                            String promoInfo = String.format(promoFormat, promo.getDescription(),
+                                                    promo.getDiscount(), promo.getValidity());
                                             insuranceResponse.setPromotion(promoInfo);
                                         });
                             }
@@ -76,8 +78,8 @@ public class InsuranceService {
                                 // Append Goteborg promotion info
                                 promotionRepository.findFirstByDescriptionOrderByValidityDesc("Goteborg City Promotion")
                                         .ifPresent(promo -> {
-                                            String promoInfo = String.format("%s - %d%% off, valid until %s",
-                                                    promo.getDescription(), promo.getDiscount(), promo.getValidity());
+                                            String promoInfo = String.format(promoFormat, promo.getDescription(),
+                                                    promo.getDiscount(), promo.getValidity());
                                             insuranceResponse.setPromotion(promoInfo);
                                         });
                             }
@@ -107,8 +109,8 @@ public class InsuranceService {
         if (featureManager.isActive(Features.BLACK_FRIDAY_PROMOTION)) {
             promotionRepository.findFirstByDescriptionOrderByValidityDesc("Black Friday")
                     .ifPresent(promo -> {
-                        String promoInfo = String.format("%s - %d%% off, valid until %s", promo.getDescription(),
-                                promo.getDiscount(), promo.getValidity());
+                        String promoInfo = String.format(promoFormat, promo.getDescription(), promo.getDiscount(),
+                                promo.getValidity());
                         insuranceResponse.setPromotion(promoInfo);
                     });
         }

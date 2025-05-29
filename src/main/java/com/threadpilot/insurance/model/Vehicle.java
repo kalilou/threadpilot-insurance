@@ -10,6 +10,10 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class Vehicle {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String registrationNumber;
     private String fuelType;
     private String model;

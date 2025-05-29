@@ -1,14 +1,12 @@
 package com.threadpilot.insurance.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "promotion")
+@Getter
+@Setter
 @Data
 @Builder
 @NoArgsConstructor
