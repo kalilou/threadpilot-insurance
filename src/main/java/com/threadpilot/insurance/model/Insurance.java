@@ -5,9 +5,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import java.util.Date;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "insurance")
+@Getter
+@Setter
 public class Insurance {
     @Id
     @Column(name = "insurance_number")
@@ -26,67 +30,4 @@ public class Insurance {
     private String insuranceStatus;
     @Column(name = "insurance_owner_number")
     private String insuranceOwnerNumber;
-
-    public Insurance() {
-    }
-
-    public Insurance(String insuranceNumber, String insuranceType, double insurancePrice, double discount,
-            Date insuranceStartDate, Date insuranceEndDate, String insuranceStatus, String insuranceOwnerNumber) {
-        this.insuranceNumber = insuranceNumber;
-        this.insuranceType = insuranceType;
-        this.insurancePrice = insurancePrice;
-        this.discount = discount;
-        this.insuranceStartDate = insuranceStartDate;
-        this.insuranceEndDate = insuranceEndDate;
-        this.insuranceStatus = insuranceStatus;
-        this.insuranceOwnerNumber = insuranceOwnerNumber;
-    }
-
-    public String getInsuranceNumber() {
-        return insuranceNumber;
-    }
-
-    public void setInsuranceNumber(String insuranceNumber) {
-        this.insuranceNumber = insuranceNumber;
-    }
-
-    public String getInsuranceType() {
-        return insuranceType;
-    }
-
-    public void setInsuranceType(String insuranceType) {
-        this.insuranceType = insuranceType;
-    }
-
-    public double getInsurancePrice() {
-        return insurancePrice;
-    }
-
-    public void setInsurancePrice(double insurancePrice) {
-        this.insurancePrice = insurancePrice;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    public Date getInsuranceStartDate() {
-        return insuranceStartDate;
-    }
-
-    public void setInsuranceStartDate(Date insuranceStartDate) {
-        this.insuranceStartDate = insuranceStartDate;
-    }
-
-    public Date getInsuranceEndDate() {
-        return insuranceEndDate;
-    }
-
-    public void setInsuranceEndDate(Date insuranceEndDate) {
-        this.insuranceEndDate = insuranceEndDate;
-    }
 }

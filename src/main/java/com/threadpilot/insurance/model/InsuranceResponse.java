@@ -1,12 +1,15 @@
 package com.threadpilot.insurance.model;
 
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class InsuranceResponse {
     private String personalId;
     private List<Insurance> insurances;
     private List<VehicleInfo> vehicles;
     private String source;
+    private String promotion;
 
     public InsuranceResponse() {
     }
@@ -46,5 +49,13 @@ public class InsuranceResponse {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public String getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(String promotion) {
+        this.promotion = promotion;
     }
 }

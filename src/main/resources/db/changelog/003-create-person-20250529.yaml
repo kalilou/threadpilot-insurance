@@ -1,0 +1,501 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: kalilou_d
+      changes:
+        - createTable:
+            tableName: customer
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: phone
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: person_identification_number
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: city
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: kalilou_d
+      changes:
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Anna" }
+              - column: { name: last_name, value: "Svensson" }
+              - column: { name: email, value: "anna.svensson1@email.se" }
+              - column: { name: phone, value: "+46700000001" }
+              - column: { name: person_identification_number, value: "199001011001" }
+              - column: { name: city, value: "Stockholm" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Erik" }
+              - column: { name: last_name, value: "Johansson" }
+              - column: { name: email, value: "erik.johansson2@email.se" }
+              - column: { name: phone, value: "+46700000002" }
+              - column: { name: person_identification_number, value: "199002022002" }
+              - column: { name: city, value: "Gothenburg" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Maria" }
+              - column: { name: last_name, value: "Karlsson" }
+              - column: { name: email, value: "maria.karlsson3@email.se" }
+              - column: { name: phone, value: "+46700000003" }
+              - column: { name: person_identification_number, value: "199003033003" }
+              - column: { name: city, value: "Malmö" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Lars" }
+              - column: { name: last_name, value: "Nilsson" }
+              - column: { name: email, value: "lars.nilsson4@email.se" }
+              - column: { name: phone, value: "+46700000004" }
+              - column: { name: person_identification_number, value: "199004044004" }
+              - column: { name: city, value: "Uppsala" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Eva" }
+              - column: { name: last_name, value: "Andersson" }
+              - column: { name: email, value: "eva.andersson5@email.se" }
+              - column: { name: phone, value: "+46700000005" }
+              - column: { name: person_identification_number, value: "199005055005" }
+              - column: { name: city, value: "Västerås" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Oskar" }
+              - column: { name: last_name, value: "Berg" }
+              - column: { name: email, value: "oskar.berg6@email.se" }
+              - column: { name: phone, value: "+46700000006" }
+              - column: { name: person_identification_number, value: "199006066006" }
+              - column: { name: city, value: "Örebro" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Sara" }
+              - column: { name: last_name, value: "Lindberg" }
+              - column: { name: email, value: "sara.lindberg7@email.se" }
+              - column: { name: phone, value: "+46700000007" }
+              - column: { name: person_identification_number, value: "199007077007" }
+              - column: { name: city, value: "Linköping" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Johan" }
+              - column: { name: last_name, value: "Persson" }
+              - column: { name: email, value: "johan.persson8@email.se" }
+              - column: { name: phone, value: "+46700000008" }
+              - column: { name: person_identification_number, value: "199008088008" }
+              - column: { name: city, value: "Helsingborg" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Emma" }
+              - column: { name: last_name, value: "Larsson" }
+              - column: { name: email, value: "emma.larsson9@email.se" }
+              - column: { name: phone, value: "+46700000009" }
+              - column: { name: person_identification_number, value: "199009099009" }
+              - column: { name: city, value: "Jönköping" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Fredrik" }
+              - column: { name: last_name, value: "Eriksson" }
+              - column: { name: email, value: "fredrik.eriksson10@email.se" }
+              - column: { name: phone, value: "+46700000010" }
+              - column: { name: person_identification_number, value: "199010101010" }
+              - column: { name: city, value: "Norrköping" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Maja" }
+              - column: { name: last_name, value: "Axelsson" }
+              - column: { name: email, value: "maja.axelsson11@email.se" }
+              - column: { name: phone, value: "+46700000011" }
+              - column: { name: person_identification_number, value: "199011111011" }
+              - column: { name: city, value: "Halmstad" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Viktor" }
+              - column: { name: last_name, value: "Söderberg" }
+              - column: { name: email, value: "viktor.soderberg12@email.se" }
+              - column: { name: phone, value: "+46700000012" }
+              - column: { name: person_identification_number, value: "199012121012" }
+              - column: { name: city, value: "Sundsvall" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Elin" }
+              - column: { name: last_name, value: "Lundqvist" }
+              - column: { name: email, value: "elin.lundqvist13@email.se" }
+              - column: { name: phone, value: "+46700000013" }
+              - column: { name: person_identification_number, value: "199013131013" }
+              - column: { name: city, value: "Gävle" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Simon" }
+              - column: { name: last_name, value: "Björk" }
+              - column: { name: email, value: "simon.bjork14@email.se" }
+              - column: { name: phone, value: "+46700000014" }
+              - column: { name: person_identification_number, value: "199014141014" }
+              - column: { name: city, value: "Luleå" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Matilda" }
+              - column: { name: last_name, value: "Holm" }
+              - column: { name: email, value: "matilda.holm15@email.se" }
+              - column: { name: phone, value: "+46700000015" }
+              - column: { name: person_identification_number, value: "199015151015" }
+              - column: { name: city, value: "Karlstad" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Anders" }
+              - column: { name: last_name, value: "Pettersson" }
+              - column: { name: email, value: "anders.pettersson16@email.se" }
+              - column: { name: phone, value: "+46700000016" }
+              - column: { name: person_identification_number, value: "199016161016" }
+              - column: { name: city, value: "Stockholm" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Sofia" }
+              - column: { name: last_name, value: "Bergström" }
+              - column: { name: email, value: "sofia.bergstrom17@email.se" }
+              - column: { name: phone, value: "+46700000017" }
+              - column: { name: person_identification_number, value: "199017171017" }
+              - column: { name: city, value: "Stockholm" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Henrik" }
+              - column: { name: last_name, value: "Lindgren" }
+              - column: { name: email, value: "henrik.lindgren18@email.se" }
+              - column: { name: phone, value: "+46700000018" }
+              - column: { name: person_identification_number, value: "199018181018" }
+              - column: { name: city, value: "Gothenburg" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Caroline" }
+              - column: { name: last_name, value: "Ek" }
+              - column: { name: email, value: "caroline.ek19@email.se" }
+              - column: { name: phone, value: "+46700000019" }
+              - column: { name: person_identification_number, value: "199019191019" }
+              - column: { name: city, value: "Gothenburg" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Patrik" }
+              - column: { name: last_name, value: "Wallin" }
+              - column: { name: email, value: "patrik.wallin20@email.se" }
+              - column: { name: phone, value: "+46700000020" }
+              - column: { name: person_identification_number, value: "199020202020" }
+              - column: { name: city, value: "Malmö" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Jenny" }
+              - column: { name: last_name, value: "Sundberg" }
+              - column: { name: email, value: "jenny.sundberg21@email.se" }
+              - column: { name: phone, value: "+46700000021" }
+              - column: { name: person_identification_number, value: "199021212021" }
+              - column: { name: city, value: "Malmö" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Tobias" }
+              - column: { name: last_name, value: "Nyström" }
+              - column: { name: email, value: "tobias.nystrom22@email.se" }
+              - column: { name: phone, value: "+46700000022" }
+              - column: { name: person_identification_number, value: "199022222022" }
+              - column: { name: city, value: "Uppsala" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Linda" }
+              - column: { name: last_name, value: "Forsberg" }
+              - column: { name: email, value: "linda.forsberg23@email.se" }
+              - column: { name: phone, value: "+46700000023" }
+              - column: { name: person_identification_number, value: "199023232023" }
+              - column: { name: city, value: "Uppsala" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Marcus" }
+              - column: { name: last_name, value: "Hansson" }
+              - column: { name: email, value: "marcus.hansson24@email.se" }
+              - column: { name: phone, value: "+46700000024" }
+              - column: { name: person_identification_number, value: "199024242024" }
+              - column: { name: city, value: "Västerås" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Helena" }
+              - column: { name: last_name, value: "Lind" }
+              - column: { name: email, value: "helena.lind25@email.se" }
+              - column: { name: phone, value: "+46700000025" }
+              - column: { name: person_identification_number, value: "199025252025" }
+              - column: { name: city, value: "Västerås" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Kristina" }
+              - column: { name: last_name, value: "Bengtsson" }
+              - column: { name: email, value: "kristina.bengtsson26@email.se" }
+              - column: { name: phone, value: "+46700000026" }
+              - column: { name: person_identification_number, value: "199026262026" }
+              - column: { name: city, value: "Västerås" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Mats" }
+              - column: { name: last_name, value: "Svensson" }
+              - column: { name: email, value: "mats.svensson27@email.se" }
+              - column: { name: phone, value: "+46700000027" }
+              - column: { name: person_identification_number, value: "199027272027" }
+              - column: { name: city, value: "Stockholm" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Ulrika" }
+              - column: { name: last_name, value: "Lindström" }
+              - column: { name: email, value: "ulrika.lindstrom28@email.se" }
+              - column: { name: phone, value: "+46700000028" }
+              - column: { name: person_identification_number, value: "199028282028" }
+              - column: { name: city, value: "Stockholm" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Per" }
+              - column: { name: last_name, value: "Andersson" }
+              - column: { name: email, value: "per.andersson29@email.se" }
+              - column: { name: phone, value: "+46700000029" }
+              - column: { name: person_identification_number, value: "199029292029" }
+              - column: { name: city, value: "Gothenburg" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Camilla" }
+              - column: { name: last_name, value: "Nilsson" }
+              - column: { name: email, value: "camilla.nilsson30@email.se" }
+              - column: { name: phone, value: "+46700000030" }
+              - column: { name: person_identification_number, value: "199030303030" }
+              - column: { name: city, value: "Gothenburg" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Jonas" }
+              - column: { name: last_name, value: "Fransson" }
+              - column: { name: email, value: "jonas.fransson31@email.se" }
+              - column: { name: phone, value: "+46700000031" }
+              - column: { name: person_identification_number, value: "199031313031" }
+              - column: { name: city, value: "Malmö" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Sanna" }
+              - column: { name: last_name, value: "Berglund" }
+              - column: { name: email, value: "sanna.berglund32@email.se" }
+              - column: { name: phone, value: "+46700000032" }
+              - column: { name: person_identification_number, value: "199032323032" }
+              - column: { name: city, value: "Malmö" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Peter" }
+              - column: { name: last_name, value: "Holmgren" }
+              - column: { name: email, value: "peter.holmgren33@email.se" }
+              - column: { name: phone, value: "+46700000033" }
+              - column: { name: person_identification_number, value: "199033333033" }
+              - column: { name: city, value: "Uppsala" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Malin" }
+              - column: { name: last_name, value: "Lind" }
+              - column: { name: email, value: "malin.lind34@email.se" }
+              - column: { name: phone, value: "+46700000034" }
+              - column: { name: person_identification_number, value: "199034343034" }
+              - column: { name: city, value: "Uppsala" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Stefan" }
+              - column: { name: last_name, value: "Berg" }
+              - column: { name: email, value: "stefan.berg35@email.se" }
+              - column: { name: phone, value: "+46700000035" }
+              - column: { name: person_identification_number, value: "199035353035" }
+              - column: { name: city, value: "Västerås" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Cecilia" }
+              - column: { name: last_name, value: "Sjöberg" }
+              - column: { name: email, value: "cecilia.sjoberg36@email.se" }
+              - column: { name: phone, value: "+46700000036" }
+              - column: { name: person_identification_number, value: "199036363036" }
+              - column: { name: city, value: "Västerås" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Magnus" }
+              - column: { name: last_name, value: "Lindberg" }
+              - column: { name: email, value: "magnus.lindberg37@email.se" }
+              - column: { name: phone, value: "+46700000037" }
+              - column: { name: person_identification_number, value: "199037373037" }
+              - column: { name: city, value: "Stockholm" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Annika" }
+              - column: { name: last_name, value: "Eriksson" }
+              - column: { name: email, value: "annika.eriksson38@email.se" }
+              - column: { name: phone, value: "+46700000038" }
+              - column: { name: person_identification_number, value: "199038383038" }
+              - column: { name: city, value: "Stockholm" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Olof" }
+              - column: { name: last_name, value: "Sundqvist" }
+              - column: { name: email, value: "olof.sundqvist39@email.se" }
+              - column: { name: phone, value: "+46700000039" }
+              - column: { name: person_identification_number, value: "199039393039" }
+              - column: { name: city, value: "Gothenburg" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Helene" }
+              - column: { name: last_name, value: "Bergman" }
+              - column: { name: email, value: "helene.bergman40@email.se" }
+              - column: { name: phone, value: "+46700000040" }
+              - column: { name: person_identification_number, value: "199040404040" }
+              - column: { name: city, value: "Gothenburg" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Niklas" }
+              - column: { name: last_name, value: "Lund" }
+              - column: { name: email, value: "niklas.lund41@email.se" }
+              - column: { name: phone, value: "+46700000041" }
+              - column: { name: person_identification_number, value: "199041414041" }
+              - column: { name: city, value: "Malmö" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Karin" }
+              - column: { name: last_name, value: "Svensson" }
+              - column: { name: email, value: "karin.svensson42@email.se" }
+              - column: { name: phone, value: "+46700000042" }
+              - column: { name: person_identification_number, value: "199042424042" }
+              - column: { name: city, value: "Malmö" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Andreas" }
+              - column: { name: last_name, value: "Lind" }
+              - column: { name: email, value: "andreas.lind43@email.se" }
+              - column: { name: phone, value: "+46700000043" }
+              - column: { name: person_identification_number, value: "199043434043" }
+              - column: { name: city, value: "Uppsala" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Sofie" }
+              - column: { name: last_name, value: "Berg" }
+              - column: { name: email, value: "sofie.berg44@email.se" }
+              - column: { name: phone, value: "+46700000044" }
+              - column: { name: person_identification_number, value: "199044444044" }
+              - column: { name: city, value: "Uppsala" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Pontus" }
+              - column: { name: last_name, value: "Nilsson" }
+              - column: { name: email, value: "pontus.nilsson45@email.se" }
+              - column: { name: phone, value: "+46700000045" }
+              - column: { name: person_identification_number, value: "199045454045" }
+              - column: { name: city, value: "Västerås" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Eva" }
+              - column: { name: last_name, value: "Lindberg" }
+              - column: { name: email, value: "eva.lindberg46@email.se" }
+              - column: { name: phone, value: "+46700000046" }
+              - column: { name: person_identification_number, value: "199046464046" }
+              - column: { name: city, value: "Västerås" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Rikard" }
+              - column: { name: last_name, value: "Sundström" }
+              - column: { name: email, value: "rikard.sundstrom47@email.se" }
+              - column: { name: phone, value: "+46700000047" }
+              - column: { name: person_identification_number, value: "199047474047" }
+              - column: { name: city, value: "Stockholm" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Susanna" }
+              - column: { name: last_name, value: "Bergqvist" }
+              - column: { name: email, value: "susanna.bergqvist48@email.se" }
+              - column: { name: phone, value: "+46700000048" }
+              - column: { name: person_identification_number, value: "199048484048" }
+              - column: { name: city, value: "Gothenburg" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Mikael" }
+              - column: { name: last_name, value: "Lindqvist" }
+              - column: { name: email, value: "mikael.lindqvist49@email.se" }
+              - column: { name: phone, value: "+46700000049" }
+              - column: { name: person_identification_number, value: "199049494049" }
+              - column: { name: city, value: "Malmö" }
+        - insert:
+            tableName: customer
+            columns:
+              - column: { name: first_name, value: "Johanna" }
+              - column: { name: last_name, value: "Sundin" }
+              - column: { name: email, value: "johanna.sundin50@email.se" }
+              - column: { name: phone, value: "+46700000050" }
+              - column: { name: person_identification_number, value: "199050505050" }
+              - column: { name: city, value: "Stockholm" }
