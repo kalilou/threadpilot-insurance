@@ -6,6 +6,10 @@ on:
       - staging
       - main
 
+concurrency:
+  group: ${{ github.workflow }}/${{ github.head_ref || github.ref_name || github.ref }}
+  cancel-in-progress: true
+
 
 jobs:
   notification-start:
