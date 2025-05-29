@@ -1,0 +1,63 @@
+name: Test Insurance Service
+run-name: ${{ github.actor }} triggered test ${{ github.ref_name }} (${{ github.event.pull_request.base.ref }})
+on:
+  pull_request:
+    branches:
+      - staging
+      - production
+
+
+jobs:
+  notification:
+    name:  Notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notification
+        run: echo "Notification important when pipeline is started"
+
+  build:
+    name: Code static analysis (Sonar or other)
+    runs-on: ubuntu-latest
+    steps:
+      - name: perform static analysis
+        run: echo "Perform static analysis"
+      # - uses: actions/checkout@v4
+      #   with:
+      #     fetch-depth: 0
+      # - name: Set up JDK 21
+      #   uses: actions/setup-java@v4
+      #   with:
+      #     java-version: 21
+      #     distribution: 'zulu'
+      # - name: Cache SonarQube packages
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: ~/.sonar/cache
+      #     key: ${{ runner.os }}-sonar
+      #     restore-keys: ${{ runner.os }}-sonar
+      # - name: Cache Gradle packages
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: ~/.gradle/caches
+      #     key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+      #     restore-keys: ${{ runner.os }}-gradle
+      # - name: Build and analyze
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      #   run: ./gradlew build sonar --info
+
+  database-setup:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: threadpilot
+          POSTGRES_USER: threadpilot
+          POSTGRES_DB: insurancedb
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
