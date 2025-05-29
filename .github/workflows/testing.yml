@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  notification:
+  notification-start:
     name:  Notification
     runs-on: ubuntu-latest
     steps:
@@ -47,10 +47,11 @@ jobs:
       #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       #   run: ./gradlew build sonar --info
 
-  database-setup:
+  build-and-test:
+    name: Build and test
     runs-on: ubuntu-latest
     needs:
-      - notification
+      - notification-start
       - build
     services:
       postgres:
@@ -80,4 +81,13 @@ jobs:
 
       - name:  Unittests
         run: ./gradlew test
+
+  notification-end:
+    name: Notification
+    runs-on: ubuntu-latest
+    needs:
+      - build-and-test
+    steps:
+      - name: Notification
+        run: echo "Notification important when pipeline is finished"
 
