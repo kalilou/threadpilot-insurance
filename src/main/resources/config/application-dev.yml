@@ -25,3 +25,7 @@ togglz:
     secured: false
   feature-enums:
     - com.threadpilot.insurance.config.Features
+
+vehicle:
+  service:
+    base-url: http://localhost:8081/api/vehicles/owner/

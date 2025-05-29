@@ -37,6 +37,9 @@ public class InsuranceService {
     @Autowired
     private PromotionRepository promotionRepository;
 
+    @Value("${vehicle.service.base-url}")
+    private String vehicleServiceBaseUrl;
+
     public InsuranceResponse getInsurancesByPersonalId(String personalId) {
         List<Insurance> insurances = insuranceRepository.findByInsuranceOwnerNumber(personalId);
         InsuranceResponse insuranceResponse = new InsuranceResponse(personalId, insurances);
@@ -88,7 +91,7 @@ public class InsuranceService {
             }
         }
 
-        String url = "http://localhost:8081/api/vehicles/owner/" + personalId;
+        String url = vehicleServiceBaseUrl + personalId;
         ResponseEntity<List<VehicleInfo>> response = restTemplate.exchange(
                 url,
                 HttpMethod.GET,
