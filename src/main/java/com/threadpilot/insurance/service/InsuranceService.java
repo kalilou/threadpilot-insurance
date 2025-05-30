@@ -46,6 +46,11 @@ public class InsuranceService {
         List<Insurance> insurances = insuranceRepository.findByInsuranceOwnerNumber(personalId);
         InsuranceResponse insuranceResponse = new InsuranceResponse(personalId, insurances);
 
+        // Return early if no insurances found
+        if (insurances == null || insurances.isEmpty()) {
+            return insuranceResponse;
+        }
+
         // Apply discounts based on feature toggles
         if (featureManager.isActive(Features.STOCKHOLM_INSURANCE_DISCOUNT)) {
             for (Insurance insurance : insurances) {
@@ -94,13 +99,22 @@ public class InsuranceService {
         }
 
         String url = vehicleServiceBaseUrl + personalId;
-        ResponseEntity<List<Vehicle>> response = restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<Vehicle>>() {
-                });
-        List<Vehicle> vehicles = response.getBody();
+        List<Vehicle> vehicles = null;
+        try {
+            ResponseEntity<List<Vehicle>> response = restTemplate.exchange(
+                    url,
+                    HttpMethod.GET,
+                    null,
+                    new ParameterizedTypeReference<List<Vehicle>>() {
+                    });
+            vehicles = response.getBody();
+        } catch (Exception ex) {
+            // Set error info in the response
+            insuranceResponse.setVehicles(null);
+            insuranceResponse.setSource("@vehicle-service");
+            insuranceResponse.setError("Vehicle Service Unavailable");
+            insuranceResponse.setErrorMessage("Vehicle service is not reachable");
+        }
 
         if (vehicles != null && !vehicles.isEmpty()) {
             insuranceResponse.setVehicles(vehicles);

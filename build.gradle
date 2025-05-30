@@ -1,16 +1,35 @@
+
+buildscript {
+  ext { springBootVersion = '3.3.0' }
+  repositories { mavenCentral() }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+  }
+}
+
+
 plugins {
-    id 'org.springframework.boot' version '3.2.5'
+    id 'org.springframework.boot' version '3.3.0'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'java'
     id "org.sonarqube" version "6.2.0.5505"
 }
 
 group = 'com.threadpilot'
-version = '0.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
+
+bootJar {
+  archiveFileName = 'insurance-service'
+  version = '0.0.1-SNAPSHOT'
+}
+
+
+
+sourceCompatibility = 21
+targetCompatibility = 21
 
 
 sonar {
@@ -38,6 +57,14 @@ dependencies {
     implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
     implementation 'org.togglz:togglz-spring-boot-starter:4.4.0'
     implementation 'org.togglz:togglz-console:4.4.0'
+    testImplementation "org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.2.1"
+
+}
+
+dependencyManagement {
+  imports {
+    mavenBom "org.springframework.cloud:spring-cloud-dependencies:2022.0.4"
+  }
 }
 
 test {

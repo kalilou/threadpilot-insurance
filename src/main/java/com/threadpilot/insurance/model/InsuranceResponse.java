@@ -15,6 +15,8 @@ public class InsuranceResponse {
     private List<Vehicle> vehicles;
     private String source;
     private String promotion;
+    private String error;
+    private String errorMessage;
 
     public InsuranceResponse() {
     }

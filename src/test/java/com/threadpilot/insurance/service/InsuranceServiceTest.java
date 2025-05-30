@@ -119,7 +119,7 @@ class InsuranceServiceTest {
                                 .build();
                 when(insuranceRepository.findByInsuranceOwnerNumber(anyString()))
                                 .thenReturn(List.of(goteborgInsurance));
-                when(customerRepository.findByPersonIdentificationNumber(eq("199002022002")))
+                when(customerRepository.findByPersonIdentificationNumber("199002022002"))
                                 .thenReturn(Optional.of(goteborgCustomer));
                 when(featureManager.isActive(Features.GOTEBORG_INSURANCE_DISCOUNT)).thenReturn(true);
                 when(featureManager.isActive(Features.INSURANCE_DISCOUNT)).thenReturn(false);

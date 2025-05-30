@@ -41,7 +41,7 @@ class InsuranceControllerTest {
     Promotion promotion;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
 
         insurance = Insurance.builder()
                 .insuranceNumber("1234567890")
@@ -111,8 +111,6 @@ class InsuranceControllerTest {
         ResultActions response = mockMvc.perform(get("/api/insurances/{insuranceOwnerNumber}", insuranceOwnerNumber)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(insuranceResponse)));
-
-        System.out.println(response);
 
         response.andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].insuranceOwnerNumber").value(insuranceOwnerNumber))
