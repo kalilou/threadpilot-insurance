@@ -7,7 +7,6 @@ import com.threadpilot.insurance.model.Vehicle;
 import com.threadpilot.insurance.model.Promotion;
 import org.junit.jupiter.api.*;
 import java.time.LocalDate;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -16,10 +15,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.mockito.Mockito.when;
 import java.util.Date;
 import java.time.ZoneOffset;
-import org.junit.jupiter.api.DisplayName;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.test.web.servlet.ResultActions;
 import static org.mockito.BDDMockito.*;
@@ -27,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 
 @WebMvcTest(InsuranceController.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class InsuranceControllerTest {
+class InsuranceControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
