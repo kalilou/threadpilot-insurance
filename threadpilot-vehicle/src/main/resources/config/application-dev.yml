@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vehicledb
+    driverClassName: org.postgresql.Driver
+    username: threadpilot
+    password: threadpilot
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+togglz:
+  enabled: true
+  console:
+    enabled: true
+    path: /togglz-console
+  features:
+    FOO:
+      enabled: false
+    BAR:
+      enabled: true
