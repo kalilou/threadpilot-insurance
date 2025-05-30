@@ -14,11 +14,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/insurances")
 public class InsuranceController {
-    @Autowired
-    private InsuranceService insuranceService;
+    private final InsuranceService insuranceService;
 
+    @Autowired
+    public InsuranceController(InsuranceService insuranceService) {
+        this.insuranceService = insuranceService;
+    }
+
+    /**
+     * Get insurance information for a given owner number.
+     * 
+     * @param insuranceOwnerNumber the owner's personal identification number
+     * @return InsuranceResponse for the owner
+     */
     @GetMapping("/{insuranceOwnerNumber}")
-    public List<InsuranceResponse> getInsurances(@PathVariable String insuranceOwnerNumber) {
-        return List.of(insuranceService.getInsurancesByOwnerNumber(insuranceOwnerNumber));
+    public InsuranceResponse getInsurances(@PathVariable String insuranceOwnerNumber) {
+        return insuranceService.getInsurancesByOwnerNumber(insuranceOwnerNumber);
     }
 }

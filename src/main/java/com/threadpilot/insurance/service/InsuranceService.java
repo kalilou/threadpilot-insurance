@@ -12,10 +12,8 @@ import org.springframework.http.HttpMethod;
 import com.threadpilot.insurance.config.Features;
 import org.togglz.core.manager.FeatureManager;
 import com.threadpilot.insurance.repository.CustomerRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import com.threadpilot.insurance.repository.PromotionRepository;
-import com.threadpilot.insurance.model.Promotion;
 
 @Service
 public class InsuranceService {
@@ -30,9 +28,6 @@ public class InsuranceService {
 
     @Autowired
     private CustomerRepository customerRepository;
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
 
     @Autowired
     private PromotionRepository promotionRepository;

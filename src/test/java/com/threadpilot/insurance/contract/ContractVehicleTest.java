@@ -1,4 +1,4 @@
-package com.threadpilot.insurance;
+package com.threadpilot.insurance.contract;
 
 import com.threadpilot.insurance.repository.PromotionRepository;
 import com.threadpilot.insurance.repository.CustomerRepository;
@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureStubRunner(ids = "com.threadpilot:vehicle-service:0.0.1-SNAPSHOT:stubs:8081", stubsMode = StubRunnerProperties.StubsMode.LOCAL)
 @ActiveProfiles("test")
-public class IntegrationVehicleTest {
+public class ContractVehicleTest {
 
     private final RestTemplate restTemplate = new RestTemplate();
 

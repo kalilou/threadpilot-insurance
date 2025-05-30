@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 
 @WebMvcTest(InsuranceController.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class InsuranceControllerTest {
+class ControllerIntegrationTest {
 
         @Autowired
         private MockMvc mockMvc;
@@ -72,8 +72,6 @@ class InsuranceControllerTest {
                                 .build();
         }
 
-        // Get Controller Test
-
         @Order(1)
         @Test
         void testGetInsurances() throws Exception {
@@ -86,19 +84,19 @@ class InsuranceControllerTest {
                                                 .content(objectMapper.writeValueAsString(insuranceResponse)));
 
                 response.andDo(print()).andExpect(status().isOk())
-                                .andExpect(jsonPath("$[0].insuranceOwnerNumber").value(insuranceOwnerNumber))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceNumber")
+                                .andExpect(jsonPath("$.insuranceOwnerNumber").value(insuranceOwnerNumber))
+                                .andExpect(jsonPath("$.insurances[0].insuranceNumber")
                                                 .value(insurance.getInsuranceNumber()))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceType")
+                                .andExpect(jsonPath("$.insurances[0].insuranceType")
                                                 .value(insurance.getInsuranceType()))
-                                .andExpect(jsonPath("$[0].insurances[0].insurancePrice")
+                                .andExpect(jsonPath("$.insurances[0].insurancePrice")
                                                 .value(insurance.getInsurancePrice()))
-                                .andExpect(jsonPath("$[0].insurances[0].discount").value(insurance.getDiscount()))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceStartDate")
+                                .andExpect(jsonPath("$.insurances[0].discount").value(insurance.getDiscount()))
+                                .andExpect(jsonPath("$.insurances[0].insuranceStartDate")
                                                 .value("2025-01-01T00:00:00.000+00:00"))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceEndDate")
+                                .andExpect(jsonPath("$.insurances[0].insuranceEndDate")
                                                 .value("2025-12-31T00:00:00.000+00:00"))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceStatus")
+                                .andExpect(jsonPath("$.insurances[0].insuranceStatus")
                                                 .value(insurance.getInsuranceStatus()));
         }
 
@@ -121,29 +119,29 @@ class InsuranceControllerTest {
                                                 .content(objectMapper.writeValueAsString(insuranceResponse)));
 
                 response.andDo(print()).andExpect(status().isOk())
-                                .andExpect(jsonPath("$[0].insuranceOwnerNumber").value(insuranceOwnerNumber))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceNumber")
+                                .andExpect(jsonPath("$.insuranceOwnerNumber").value(insuranceOwnerNumber))
+                                .andExpect(jsonPath("$.insurances[0].insuranceNumber")
                                                 .value(insurance.getInsuranceNumber()))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceType")
+                                .andExpect(jsonPath("$.insurances[0].insuranceType")
                                                 .value(insurance.getInsuranceType()))
-                                .andExpect(jsonPath("$[0].insurances[0].insurancePrice")
+                                .andExpect(jsonPath("$.insurances[0].insurancePrice")
                                                 .value(insurance.getInsurancePrice()))
-                                .andExpect(jsonPath("$[0].insurances[0].discount").value(insurance.getDiscount()))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceStartDate")
+                                .andExpect(jsonPath("$.insurances[0].discount").value(insurance.getDiscount()))
+                                .andExpect(jsonPath("$.insurances[0].insuranceStartDate")
                                                 .value("2025-01-01T00:00:00.000+00:00"))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceEndDate")
+                                .andExpect(jsonPath("$.insurances[0].insuranceEndDate")
                                                 .value("2025-12-31T00:00:00.000+00:00"))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceStatus")
+                                .andExpect(jsonPath("$.insurances[0].insuranceStatus")
                                                 .value(insurance.getInsuranceStatus()))
-                                .andExpect(jsonPath("$[0].vehicles[0].registrationNumber")
+                                .andExpect(jsonPath("$.vehicles[0].registrationNumber")
                                                 .value(vehicle.getRegistrationNumber()))
-                                .andExpect(jsonPath("$[0].vehicles[0].model").value(vehicle.getModel()))
-                                .andExpect(jsonPath("$[0].vehicles[0].make").value(vehicle.getMake()))
-                                .andExpect(jsonPath("$[0].vehicles[0].year").value(vehicle.getYear()))
-                                .andExpect(jsonPath("$[0].vehicles[0].color").value(vehicle.getColor()))
-                                .andExpect(jsonPath("$[0].vehicles[0].ownerPersonalNumber")
+                                .andExpect(jsonPath("$.vehicles[0].model").value(vehicle.getModel()))
+                                .andExpect(jsonPath("$.vehicles[0].make").value(vehicle.getMake()))
+                                .andExpect(jsonPath("$.vehicles[0].year").value(vehicle.getYear()))
+                                .andExpect(jsonPath("$.vehicles[0].color").value(vehicle.getColor()))
+                                .andExpect(jsonPath("$.vehicles[0].ownerPersonalNumber")
                                                 .value(vehicle.getOwnerPersonalNumber()))
-                                .andExpect(jsonPath("$[0].vehicles[0].mileage").value(vehicle.getMileage()));
+                                .andExpect(jsonPath("$.vehicles[0].mileage").value(vehicle.getMileage()));
         }
 
         @Order(3)
@@ -170,12 +168,12 @@ class InsuranceControllerTest {
                                                 .content(objectMapper.writeValueAsString(insuranceResponse)));
 
                 response.andDo(print()).andExpect(status().isOk())
-                                .andExpect(jsonPath("$[0].insuranceOwnerNumber").value(insuranceOwnerNumber))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceNumber")
+                                .andExpect(jsonPath("$.insuranceOwnerNumber").value(insuranceOwnerNumber))
+                                .andExpect(jsonPath("$.insurances[0].insuranceNumber")
                                                 .value(insurance.getInsuranceNumber()))
-                                .andExpect(jsonPath("$[0].insurances[0].insuranceStatus")
+                                .andExpect(jsonPath("$.insurances[0].insuranceStatus")
                                                 .value(insurance.getInsuranceStatus()))
-                                .andExpect(jsonPath("$[0].promotion")
+                                .andExpect(jsonPath("$.promotion")
                                                 .value("Black Friday - 10% off, valid until 2025-12-31"));
         }
 }
