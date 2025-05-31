@@ -15,8 +15,10 @@ spring:
 logging:
   level:
     root: "info"
-    org.springframework.web: "debug"
-    org.hibernate: "error"
+    org:
+      springframework:
+        web: "debug"
+      hibernate: "error"
 
 togglz:
   console:

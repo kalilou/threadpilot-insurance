@@ -10,6 +10,9 @@ plugins {
 group = 'com.threadpilot'
 version = '0.0.1-SNAPSHOT'
 
+sourceCompatibility = 21
+targetCompatibility = 21
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -24,10 +27,10 @@ publishing {
 
 repositories {
     mavenCentral()
+    mavenLocal()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
 }
-
-sourceCompatibility = 21
-targetCompatibility = 21
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -64,18 +67,23 @@ configurations.all {
     }
 }
 
-
 contracts {
   testMode = 'MockMvc'
   contractsDslDir = file("src/test/resources/contracts")
   baseClassForTests = 'com.threadpilot.vehicle.ContractVerifierBase'
   packageWithBaseClasses = 'com.threadpilot.vehicle'
+  contractRepository {
+    repositoryUrl = "git://https://github.com/kalilou/threadpilot-stubs.git"
+  }
+  contractsMode = "REMOTE"
 }
 
+publish.dependsOn("publishStubsToScm")
 
 test {
     useJUnitPlatform()
 }
+
 
 
 

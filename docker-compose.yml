@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  vehicle-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=vehicle_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - vehicle_pgdata:/var/lib/postgresql/data
+
+  insurance-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=insurance_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - insurance_pgdata:/var/lib/postgresql/data
+
+  vehicle-service:
+    build: ./threadpilot-vehicle
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://vehicle-db:5432/vehicle_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    depends_on:
+      - vehicle-db
+
+  insurance-service:
+    build: ./threadpilot-insurance
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://insurance-db:5432/insurance_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - VEHICLE_SERVICE_BASE_URL=http://vehicle-service:8081/api/vehicles/owner/
+    depends_on:
+      - insurance-db
+      - vehicle-service
+
+volumes:
+  vehicle_pgdata:
+  insurance_pgdata:
