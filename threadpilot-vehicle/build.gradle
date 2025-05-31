@@ -72,13 +72,8 @@ contracts {
   contractsDslDir = file("src/test/resources/contracts")
   baseClassForTests = 'com.threadpilot.vehicle.ContractVerifierBase'
   packageWithBaseClasses = 'com.threadpilot.vehicle'
-  contractRepository {
-    repositoryUrl = "git://https://github.com/kalilou/threadpilot-stubs.git"
-  }
-  contractsMode = "REMOTE"
+  contractsMode = "LOCAL"
 }
-
-publish.dependsOn("publishStubsToScm")
 
 test {
     useJUnitPlatform()

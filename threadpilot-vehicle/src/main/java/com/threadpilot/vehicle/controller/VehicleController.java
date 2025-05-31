@@ -20,8 +20,8 @@ public class VehicleController {
         return vehicleService.getVehicleByRegistration(registrationNumber);
     }
 
-    @GetMapping("/owner/{personalId}")
-    public List<Vehicle> getVehiclesByOwner(@PathVariable String personalId) {
-        return vehicleService.findByOwnerPersonalNumber(personalId);
+    @GetMapping("/owner/{insuranceOwnerNumber}")
+    public List<Vehicle> getVehiclesByOwner(@PathVariable String insuranceOwnerNumber) {
+        return vehicleService.findByOwnerPersonalNumber(insuranceOwnerNumber);
     }
 }

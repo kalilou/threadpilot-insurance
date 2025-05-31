@@ -19,7 +19,7 @@ public class VehicleService {
         return vehicleRepository.findByRegistrationNumber(registrationNumber);
     }
 
-    public List<Vehicle> findByOwnerPersonalNumber(String personalId) {
-        return vehicleRepository.findByOwnerPersonalNumber(personalId);
+    public List<Vehicle> findByOwnerPersonalNumber(String insuranceOwnerNumber) {
+        return vehicleRepository.findByOwnerPersonalNumber(insuranceOwnerNumber);
     }
 }

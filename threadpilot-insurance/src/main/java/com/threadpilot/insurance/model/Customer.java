@@ -1,10 +1,7 @@
 package com.threadpilot.insurance.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "customer")
@@ -12,26 +9,27 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name", nullable = false, length = 20)
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = false, length = 20)
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email", nullable = false, length = 30)
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "phone", nullable = false, length = 20)
+    @Column(name = "phone")
     private String phone;
 
-    @Column(name = "person_identification_number", nullable = false, length = 30)
+    @Column(name = "person_identification_number")
     private String personIdentificationNumber;
 
-    @Column(name = "city", nullable = false, length = 100)
+    @Column(name = "city")
     private String city;
 }

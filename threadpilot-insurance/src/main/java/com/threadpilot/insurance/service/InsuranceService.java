@@ -12,10 +12,8 @@ import org.springframework.http.HttpMethod;
 import com.threadpilot.insurance.config.Features;
 import org.togglz.core.manager.FeatureManager;
 import com.threadpilot.insurance.repository.CustomerRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import com.threadpilot.insurance.repository.PromotionRepository;
-import com.threadpilot.insurance.model.Promotion;
 
 @Service
 public class InsuranceService {
@@ -32,17 +30,14 @@ public class InsuranceService {
     private CustomerRepository customerRepository;
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
     private PromotionRepository promotionRepository;
 
     @Value("${vehicle.service.base-url}")
     private String vehicleServiceBaseUrl;
 
-    public InsuranceResponse getInsurancesByPersonalId(String personalId) {
-        List<Insurance> insurances = insuranceRepository.findByInsuranceOwnerNumber(personalId);
-        InsuranceResponse insuranceResponse = new InsuranceResponse(personalId, insurances);
+    public InsuranceResponse getInsurancesByOwnerNumber(String insuranceOwnerNumber) {
+        List<Insurance> insurances = insuranceRepository.findByInsuranceOwnerNumber(insuranceOwnerNumber);
+        InsuranceResponse insuranceResponse = new InsuranceResponse(insuranceOwnerNumber, insurances);
 
         // Apply discounts based on feature toggles
         if (featureManager.isActive(Features.STOCKHOLM_INSURANCE_DISCOUNT)) {
@@ -91,14 +86,14 @@ public class InsuranceService {
             }
         }
 
-        String url = vehicleServiceBaseUrl + personalId;
-        ResponseEntity<List<VehicleInfo>> response = restTemplate.exchange(
+        String url = vehicleServiceBaseUrl + insuranceOwnerNumber;
+        ResponseEntity<List<Vehicle>> response = restTemplate.exchange(
                 url,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<VehicleInfo>>() {
+                new ParameterizedTypeReference<List<Vehicle>>() {
                 });
-        List<VehicleInfo> vehicles = response.getBody();
+        List<Vehicle> vehicles = response.getBody();
 
         if (vehicles != null && !vehicles.isEmpty()) {
             insuranceResponse.setVehicles(vehicles);

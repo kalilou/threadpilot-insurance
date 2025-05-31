@@ -3,7 +3,7 @@ package com.threadpilot.vehicle
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
-    description "Should return vehicle info for a given person number"
+    description "Should return vehicle info for a given insurance owner number"
     request {
         method 'GET'
         urlPath('/api/vehicles/owner/199001011235')
