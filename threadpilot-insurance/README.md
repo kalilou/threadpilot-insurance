@@ -1,13 +1,13 @@
 ```diff
- _____ _                        _       _ _       _
-|_   _| |__  _ __ ___  __ _  __| |_ __ (_) | ___ | |_
-  | | | '_ \| '__/ _ \/ _` |/ _` | '_ \| | |/ _ \| __|
-  | | | | | | | |  __/ (_| | (_| | |_) | | | (_) | |_
-  |_|_|_| |_|_|  \___|\__,_|\__,_| .__/|_|_|\___/ \__|
-    |_ _|_ __  ___ _   _ _ __ __ |_| __   ___ ___
-     | || '_ \/ __| | | | '__/ _` | '_ \ / __/ _ \
-     | || | | \__ \ |_| | | | (_| | | | | (_|  __/
-    |___|_| |_|___/\__,_|_|  \__,_|_| |_|\___\___|
+                    _____ _                        _       _ _       _
+                    |_   _| |__  _ __ ___  __ _  __| |_ __ (_) | ___ | |_
+                      | | | '_ \| '__/ _ \/ _` |/ _` | '_ \| | |/ _ \| __|
+                      | | | | | | | |  __/ (_| | (_| | |_) | | | (_) | |_
+                      |_|_|_| |_|_|  \___|\__,_|\__,_| .__/|_|_|\___/ \__|
+                        |_ _|_ __  ___ _   _ _ __ __ |_| __   ___ ___
+                        | || '_ \/ __| | | | '__/ _` | '_ \ / __/ _ \
+                        | || | | \__ \ |_| | | | (_| | | | | (_|  __/
+                        |___|_| |_|___/\__,_|_|  \__,_|_| |_|\___\___|
 ```
 
 # threadpilot-insurance
@@ -116,19 +116,18 @@ vehicle:
 ## Running Locally
 
 ### Prerequisites
+- Postgres Database up and running
 
-- Docker and Docker Compose installed.
-
-### Start All Services
+### Start Service
 
 ```sh
-docker-compose up --build
+./gradlew bootRun --args='--spring.profiles.active=dev'
 ```
 
 This will start:
-- `insurance-service` (on port 8082)
-- `vehicle-service` (on port 8081)
-- Dedicated PostgreSQL databases for each service
+- `insurance-service` (on port 8080)
+
+Please refer to [README on how to start the service using docker compose](../README.md#running-locally)
 
 ### API Documentation
 
@@ -157,7 +156,4 @@ http://localhost:8082/togglz-console
 - Main source: `src/main/java/com/threadpilot/insurance`
 - Configuration: `src/main/resources/config`
 - Database migrations: `src/main/resources/db/changelog`
-
-## License
-
-MIT (or your chosen license)
+- Testing: `src/tests/`

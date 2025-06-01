@@ -1,16 +1,16 @@
 
 ```diff
- ____             _       _   ____              _
-/ ___| _ __  _ __(_)_ __ | |_| __ )  ___   ___ | |_
-\___ \| '_ \| '__| | '_ \| __|  _ \ / _ \ / _ \| __|
- ___) | |_) | |  | | | | | |_| |_) | (_) | (_) | |_
-|____/| .__/|_|  |_|_| |_|\__|____/ \___/ \___/ \__|
- _____|_|                       _       _ _       _
-|_   _| |__  _ __ ___  __ _  __| |_ __ (_) | ___ | |_
-  | | | '_ \| '__/ _ \/ _` |/ _` | '_ \| | |/ _ \| __|
-  | | | | | | | |  __/ (_| | (_| | |_) | | | (_) | |_
-  |_| |_| |_|_|  \___|\__,_|\__,_| .__/|_|_|\___/ \__|
-                                 |_|
+                    ____             _       _   ____              _
+                    / ___| _ __  _ __(_)_ __ | |_| __ )  ___   ___ | |_
+                    \___ \| '_ \| '__| | '_ \| __|  _ \ / _ \ / _ \| __|
+                    ___) | |_) | |  | | | | | |_| |_) | (_) | (_) | |_
+                    |____/| .__/|_|  |_|_| |_|\__|____/ \___/ \___/ \__|
+                    _____|_|                       _       _ _       _
+                    |_   _| |__  _ __ ___  __ _  __| |_ __ (_) | ___ | |_
+                      | | | '_ \| '__/ _ \/ _` |/ _` | '_ \| | |/ _ \| __|
+                      | | | | | | | |  __/ (_| | (_| | |_) | | | (_) | |_
+                      |_| |_| |_|_|  \___|\__,_|\__,_| .__/|_|_|\___/ \__|
+                                                    |_|
 ```
 # Threadpilot Microservices
 
@@ -38,7 +38,7 @@ This project contains two microservices:
 | ![Liquibase](https://img.shields.io/badge/Liquibase-2962FF?style=for-the-badge&logo=liquibase&logoColor=white) | Database migration used in threadpilot |
 | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white) | Relational database |
 | ![Togglz](https://img.shields.io/badge/Togglz-FF6F00?style=for-the-badge&logo=featureflag&logoColor=white) | Feature toggle system |
-| ![Sonar](https://img.shields.io/badge/SonarQube-4E9BCD?style=for-the-badge&logo=sonarqube&logoColor=white) | Code quality and static analysis |
+| ![Sonar](https://img.shields.io/badge/SonarQube-4E9BCD?style=for-the-badge&logo=sonarqube&logoColor=white) | Code quality and static analysis as well as security vulnerability scanning |
 | ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white) | CI/CD pipelines |
 | ![IntelliJ](https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white) | Main development IDE |
 | ![VS Code](https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white) | Alternative lightweight editor |
@@ -46,6 +46,9 @@ This project contains two microservices:
 | ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white) | API testing |
 
 ---
+> [!NOTE]
+> SonarQube was used for static analysis in this project. However, it requires additional configuration to run properly. For that reason, it hasn't been included in the local setup instructions.
+
 
 ## Running locally
 ### Prerequisite
@@ -79,8 +82,25 @@ docker-compose up --build
 
 ## Feature Toggles
 ![Promotion Feature Manager](/images/feature_flags.png)
-In this projects, for the feature toggles I make use of Togglz which is a Java-based library implementing feature flags enabling us to dynamically enable/disable features without redeploying the codebase. In this project, I took promotion based approach as feature flags. This is will integrated with SpringBoot.
-Endpoint: http://localhost:8080/togglz-console
+In this projects, for the feature toggles I make use of Togglz which is a Java-based library implementing feature flags enabling us to dynamically enable/disable features without redeploying the codebase. In this project, I took promotion based approach as feature flags. This is well integrated with SpringBoot. Endpoint: http://localhost:8080/togglz-console
+
+The following features have been used as example:
+```Java
+    @Label("Enable insurance discount feature")
+    INSURANCE_DISCOUNT,
+
+    @Label("Enable stockholm insurance discount feature")
+    STOCKHOLM_INSURANCE_DISCOUNT,
+
+    @Label("Enable Goteborg insurance discount feature")
+    GOTEBORG_INSURANCE_DISCOUNT,
+
+    @Label("Enable Black Friday promotion feature")
+    BLACK_FRIDAY_PROMOTION;
+```
+> [!NOTE]
+> Please enable one at the time which how the code handled as of now.
+
 
 
 ## 🧪 Testing Strategy: The Test Pyramid
@@ -181,4 +201,6 @@ If I had more time, I would have explored:
 - 🔢 **API Versioning** I would have taken some more time to dive deeper into **API versioning**
 
 - 🔍📈 **Monitoring & Logs** I’d also spend more time exploring additional **monitoring metrics** and refining a **meaningful logging approach**. Good Monitoring and logging helps in understanding system health and debugging issues faster.
+
+- 🔐 **Spring Boot Security** I would have liked to spend more time implementing Spring Boot Security. Security (authentication and authorization)
 

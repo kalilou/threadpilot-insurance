@@ -1,14 +1,14 @@
 ```diff
- _____ _                        _       _ _       _
-|_   _| |__  _ __ ___  __ _  __| |_ __ (_) | ___ | |_
-  | | | '_ \| '__/ _ \/ _` |/ _` | '_ \| | |/ _ \| __|
-  | | | | | | | |  __/ (_| | (_| | |_) | | | (_) | |_
-  |_| |_| |_|_|  \___|\__,_|\__,_| .__/|_|_|\___/ \__|
-                     _     _     |_|
-          __   _____| |__ (_) ___| | ___
-          \ \ / / _ \ '_ \| |/ __| |/ _ \
-           \ V /  __/ | | | | (__| |  __/
-            \_/ \___|_| |_|_|\___|_|\___|
+                      _____ _                        _       _ _       _
+                      |_   _| |__  _ __ ___  __ _  __| |_ __ (_) | ___ | |_
+                        | | | '_ \| '__/ _ \/ _` |/ _` | '_ \| | |/ _ \| __|
+                        | | | | | | | |  __/ (_| | (_| | |_) | | | (_) | |_
+                        |_| |_| |_|_|  \___|\__,_|\__,_| .__/|_|_|\___/ \__|
+                                          _     _     |_|
+                                __   _____| |__ (_) ___| | ___
+                                \ \ / / _ \ '_ \| |/ __| |/ _ \
+                                \ V /  __/ | | | | (__| |  __/
+                                  \_/ \___|_| |_|_|\___|_|\___|
 ```
 
 # threadpilot-vehicle
@@ -97,7 +97,7 @@ spring:
 
 ## Running Locally
 
-Please check the root project README.md [Running locally](../Readme.md)
+Please refer to [README on how to start the service using docker compose](../README.md#running-locally)
 
 ### API Documentation
 
@@ -115,7 +115,6 @@ http://localhost:8081/swagger-ui.html
   ```
 
 ## Development
-
 - Main source: `src/main/java/com/threadpilot/vehicle`
 - Configuration: `src/main/resources/config`
 - Database migrations: `src/main/resources/db/changelog`
