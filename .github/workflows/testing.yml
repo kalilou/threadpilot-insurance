@@ -1,5 +1,6 @@
 name: Test Insurance Service
 run-name: ${{ github.actor }} triggered test ${{ github.ref_name }} (${{ github.event.pull_request.base.ref }})
+
 on:
   pull_request:
     branches:
