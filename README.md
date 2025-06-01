@@ -28,21 +28,50 @@ This project contains two microservices:
 - **Vehicle Service** exposes endpoints to get vehicle details by registration number and by owner personal ID. [VEHICLE README](threadpilot-vehicle/Readme.md)
 - **Insurance Service** exposes an endpoint to get insurance information by personal ID. [INSURANCE README](threadpilot-insurance/Readme.md)
 
+
+## 🛠️ Tech Stack
+
+| Technology      | Description                                 |
+|-----------------|---------------------------------------------|
+| ![Spring Boot](https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white) | Backend framework for building REST APIs |
+| ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) | Containerization for easy deployment |
+| ![Liquibase](https://img.shields.io/badge/Liquibase-2962FF?style=for-the-badge&logo=liquibase&logoColor=white) | Database version control tool |
+| ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white) | Relational database |
+| ![Togglz](https://img.shields.io/badge/Togglz-FF6F00?style=for-the-badge&logo=featureflag&logoColor=white) | Feature toggle system |
+| ![Sonar](https://img.shields.io/badge/SonarQube-4E9BCD?style=for-the-badge&logo=sonarqube&logoColor=white) | Code quality and static analysis |
+| ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white) | CI/CD pipelines |
+| ![IntelliJ](https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white) | Main development IDE |
+| ![VS Code](https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white) | Alternative lightweight editor |
+| ![Gradle](https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white) | Build automation tool |
+
+---
+
 ## Running locally
 ### Prerequisite
 - docker installed [Docker Installation](https://docs.docker.com/engine/install/)
 - docker compose installation [Docker Compose Installation](https://docs.docker.com/compose/install/)
+
 
 ### Running docker compose
 Clone the project repository
 ```bash
 git clone https://github.com/kalilou/threadpilot-poc.git
 ```
+Build threadpilot-vehicle
+```bash
+cd threadpilot-vehicle && ./gradlew clean build
+```
+
+Build threadpilot-insurance
+```bash
+cd threadpilot-insurance && ./gradlew clean build
+```
+
 Run docker compose on the root of the project
 ```bash
 docker-compose up --build
 ```
-#### Threadpilot Endpoints
+#### Example Threadpilot Endpoints
 - **Insurance Endpoint:** [`http://localhost:8080/api/insurances/199001011001`](http://localhost:8080/api/insurances/199001011001)
 - **Feature Toggle Endpoint:** [`http://localhost:8080/togglz-console`](http://localhost:8080/togglz-console)
 - **Vehicle Endpoint:** [`http://localhost:8081/api/vehicles/ABC130`](http://localhost:8081/api/vehicles/ABC130)
