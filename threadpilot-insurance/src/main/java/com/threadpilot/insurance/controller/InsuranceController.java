@@ -17,8 +17,8 @@ public class InsuranceController {
     @Autowired
     private InsuranceService insuranceService;
 
-    @GetMapping("/{personalId}")
-    public List<InsuranceResponse> getInsurances(@PathVariable String personalId) {
-        return List.of(insuranceService.getInsurancesByPersonalId(personalId));
+    @GetMapping("/{insuranceOwnerNumber}")
+    public List<InsuranceResponse> getInsurances(@PathVariable String insuranceOwnerNumber) {
+        return List.of(insuranceService.getInsurancesByOwnerNumber(insuranceOwnerNumber));
     }
 }

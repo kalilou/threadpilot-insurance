@@ -1,0 +1,25 @@
+@startuml
+!theme plain
+actor User
+
+package "threadpilot-insurance" {
+  [InsuranceController] as InsuranceAPI
+  [InsuranceService]
+}
+
+package "threadpilot-vehicle" {
+  [VehicleController] as VehicleAPI
+  [VehicleService]
+}
+
+User --> InsuranceAPI : GET /api/insurances/{personalId}
+InsuranceAPI --> InsuranceService : getInsurancesByPersonalId(personalId)
+InsuranceService --> VehicleAPI : GET /api/vehicles/owner/{personalId}
+VehicleAPI --> VehicleService : findByOwnerPersonalNumber(personalId)
+
+' Optional: VehicleService queries DB (not shown)
+InsuranceService <-- VehicleAPI : List<Vehicle>
+InsuranceAPI <-- InsuranceService : InsuranceResponse
+User <-- InsuranceAPI : InsuranceResponse
+
+@enduml
