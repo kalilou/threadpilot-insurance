@@ -30,12 +30,12 @@ This project contains two microservices:
 
 
 ## 🛠️ Tech Stack
-
 | Technology      | Description                                 |
 |-----------------|---------------------------------------------|
-| ![Spring Boot](https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white) | Backend framework for building REST APIs |
-| ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) | Containerization for easy deployment |
-| ![Liquibase](https://img.shields.io/badge/Liquibase-2962FF?style=for-the-badge&logo=liquibase&logoColor=white) | Database version control tool |
+| ![Spring Boot](https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white) | Backend framework for building threadpilot-insurance and threadpilot-vehicle REST APIs |
+| ![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white) | Programming language used  |
+| ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) | Used for local development |
+| ![Liquibase](https://img.shields.io/badge/Liquibase-2962FF?style=for-the-badge&logo=liquibase&logoColor=white) | Database migration used in threadpilot |
 | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white) | Relational database |
 | ![Togglz](https://img.shields.io/badge/Togglz-FF6F00?style=for-the-badge&logo=featureflag&logoColor=white) | Feature toggle system |
 | ![Sonar](https://img.shields.io/badge/SonarQube-4E9BCD?style=for-the-badge&logo=sonarqube&logoColor=white) | Code quality and static analysis |
@@ -43,6 +43,7 @@ This project contains two microservices:
 | ![IntelliJ](https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white) | Main development IDE |
 | ![VS Code](https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white) | Alternative lightweight editor |
 | ![Gradle](https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white) | Build automation tool |
+| ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white) | API testing |
 
 ---
 
