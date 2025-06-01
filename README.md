@@ -175,7 +175,7 @@ This GitHub Actions workflow automates the build and deployment process for the 
 ---
 
 ## 📖 API Documentation with Swagger
-
+![Swagger docker](/images/doc.png)
 Both the Vehicle and Insurance microservices are equipped with Swagger (OpenAPI) for interactive API documentation and testing.
 
 ### 🔧 Setup & Access

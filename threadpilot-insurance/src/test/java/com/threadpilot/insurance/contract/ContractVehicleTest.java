@@ -42,6 +42,12 @@ public class ContractVehicleTest {
         Vehicle vehicle = vehicles[0];
         assertThat(vehicle.getRegistrationNumber()).isEqualTo("1234567890");
         assertThat(vehicle.getOwnerPersonalNumber()).isEqualTo("199001011235");
-    }
+        assertThat(vehicle.getMake()).isEqualTo("Toyota");
+        assertThat(vehicle.getModel()).isEqualTo("Corolla");
+        assertThat(vehicle.getYear()).isEqualTo(2020);
+        assertThat(vehicle.getColor()).isEqualTo("Red");
+        assertThat(vehicle.getFuelType()).isEqualTo("Petrol");
+        assertThat(vehicle.getMileage()).isEqualTo(1000);
 
+    }
 }
