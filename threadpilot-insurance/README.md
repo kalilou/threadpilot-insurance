@@ -114,9 +114,12 @@ vehicle:
 - Example changelogs: `001-initial-create-tables.yaml`, `003-create-person-20250529.yaml`, `006-create-promotion-20250529.yaml`.
 
 ## Running Locally
-
 ### Prerequisites
 - Postgres Database up and running
+
+```bash
+docker run --name threadpilot -e POSTGRES_DB=insurancedb -e POSTGRES_PASSWORD=threadpilot -e POSTGRES_USER=threadpilot -p 5434:5432 -d postgres
+```
 
 ### Start Service
 
@@ -133,7 +136,7 @@ Please refer to [README on how to start the service using docker compose](../REA
 
 Once running, access the OpenAPI UI at:
 ```
-http://localhost:8082/swagger-ui.html
+http://localhost:8080/swagger-ui/index.html
 ```
 
 ### Feature Toggles

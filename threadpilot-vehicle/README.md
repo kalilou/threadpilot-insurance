@@ -97,13 +97,30 @@ spring:
 
 ## Running Locally
 
+## Running Locally
+### Prerequisites
+- Postgres Database up and running
+
+```bash
+docker run --name threadpilot -e POSTGRES_DB=vehicledb -e POSTGRES_PASSWORD=threadpilot -e POSTGRES_USER=threadpilot -p 5433:5432 -d postgres
+```
+
+### Start Service
+
+```sh
+./gradlew bootRun --args='--spring.profiles.active=dev'
+```
+
+This will start:
+- `vehicle-service` (on port 8080)
+
 Please refer to [README on how to start the service using docker compose](../README.md#running-locally)
 
 ### API Documentation
 
 Once running, access the OpenAPI UI at:
 ```
-http://localhost:8081/swagger-ui.html
+http://localhost:8081/swagger-ui/index.html
 ```
 
 ## Testing

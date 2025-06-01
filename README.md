@@ -180,8 +180,8 @@ Both the Vehicle and Insurance microservices are equipped with Swagger (OpenAPI)
 
 ### 🔧 Setup & Access
 - After starting each service, access the Swagger UI in your browser:
-  - **Vehicle Service:** [http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
-  - **Insurance Service:** [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+  - **Vehicle Service:** [http://localhost:8081/swagger-ui/index.html](http://localhost:8081/swagger-ui/index.html)
+  - **Insurance Service:** [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
 
 ---
 ## 💭 Personal Reflection
