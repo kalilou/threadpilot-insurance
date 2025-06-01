@@ -2,11 +2,11 @@ package com.threadpilot.insurance.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.LocalDate;
 
 @Entity
-@Getter
-@Setter
+@Table(name = "promotion")
 @Data
 @Builder
 @NoArgsConstructor
@@ -22,5 +22,6 @@ public class Promotion {
     private LocalDate validity;
 
     @Column(name = "description")
+
     private String description;
 }

@@ -14,3 +14,24 @@ spring:
 
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
+<<<<<<< HEAD:threadpilot-vehicle/src/test/resources/application.yml
+=======
+
+logging:
+  level:
+    root: "info"
+    org.springframework.web: "debug"
+    org.hibernate: "error"
+
+togglz:
+  console:
+    enabled: true
+    path: /togglz-console
+    secured: false
+  feature-enums:
+    - com.threadpilot.insurance.config.Features
+
+vehicle:
+  service:
+    base-url: http://localhost:8081/api/vehicles/owner/
+>>>>>>> main:src/main/resources/config/application-dev.yml
