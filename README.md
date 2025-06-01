@@ -28,9 +28,29 @@ This project contains two microservices:
 - **Vehicle Service** exposes endpoints to get vehicle details by registration number and by owner personal ID. [VEHICLE README](threadpilot-vehicle/Readme.md)
 - **Insurance Service** exposes an endpoint to get insurance information by personal ID. [INSURANCE README](threadpilot-insurance/Readme.md)
 
+## Running locally
+### Prerequisite
+- docker installed [Docker Installation](https://docs.docker.com/engine/install/)
+- docker compose installation [Docker Compose Installation](https://docs.docker.com/compose/install/)
+
+### Running docker compose
+Clone the project repository
+```bash
+git clone https://github.com/kalilou/threadpilot-poc.git
+```
+Run docker compose on the root of the project
+```bash
+docker-compose up --build
+```
+#### Threadpilot Endpoints
+- **Insurance Endpoint:** [`http://localhost:8080/api/insurances/199001011001`](http://localhost:8080/api/insurances/199001011001)
+- **Feature Toggle Endpoint:** [`http://localhost:8080/togglz-console`](http://localhost:8080/togglz-console)
+- **Vehicle Endpoint:** [`http://localhost:8081/api/vehicles/ABC130`](http://localhost:8081/api/vehicles/ABC130)
+
 ## Feature Toggles
 ![Promotion Feature Manager](/images/feature_flags.png)
 In this projects, for the feature toggles I make use of Togglz which is a Java-based library implementing feature flags enabling us to dynamically enable/disable features without redeploying the codebase. In this project, I took promotion based approach as feature flags. This is will integrated with SpringBoot.
+Endpoint: http://localhost:8080/togglz-console
 
 
 ## 🧪 Testing Strategy: The Test Pyramid
@@ -111,17 +131,24 @@ Both the Vehicle and Insurance microservices are equipped with Swagger (OpenAPI)
 ### 🔧 Setup & Access
 - After starting each service, access the Swagger UI in your browser:
   - **Vehicle Service:** [http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
-  - **Insurance Service:** [http://localhost:8080/swagger-ui.html](http://localhost:8082/swagger-ui.html)
+  - **Insurance Service:** [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ---
-## Personal Reflection
+## 💭 Personal Reflection
 
-I have previously worked extensivily on testing when I worked a backend engineering at Schibsted from writing unittests, integration and end to end tests as well as during my consulting time I have worked with tests across different industries.
+In my previous role as a Backend Engineer at Schibsted, I worked extensively on testing—ranging from unit tests to integration and end-to-end tests. During my time as a consultant, I also had the opportunity to work on testing strategies across various industries.
 
-What I have found challenging about not having much time to focus on a proper implementation by looking for example on the contract testing which I found extremely interesting.
+One challenge I faced in this project was the limited time available to dive deep into some areas I find particularly interesting, such as contract testing. I believe there’s a lot of value in implementing it properly, and I would have loved more time to explore it further.
 
-If I had more time I would look into the following:
-- Feature toggles: Togglz integrate well with SpringBoot but I would love to look into other tools like unleash given it is language-agnostic but with the timeframe in this project it would have taken more time to look into unleash.
-- Contract testing, I would like to use an external storage e.g Github for contracts for both the products threadpilot-vehicle and consumer threadpilot-insurance.
-- For enpowering developers or onboarding new developers, I would have looked in the tools such backstage or Harness developer portal API.
+If I had more time, I would have explored:
+
+- 🔀 **Feature toggles**: While [Togglz](https://www.togglz.org/) integrates well with Spring Boot and was the obvious choice, I’m also interested in tools like [Unleash](https://www.getunleash.io/) due to its language-agnostic nature 🌐. However, evaluating and implementing it properly would have required more time.
+
+- 🤝 **Contract testing**: I would have liked to externalize and version control contracts, ideally storing them in GitHub 📂. This would have been especially useful for managing contracts between the `threadpilot-vehicle` and `threadpilot-insurance` products.
+
+- 🚀 **Developer experience**: For onboarding and empowering developers, I was keen on exploring tools like [Backstage](https://backstage.io/) or the [Harness Developer Portal API](https://developer.harness.io/). These tools could significantly improve discoverability and developer productivity ⚙️.
+
+- 🔢 **API Versioning** I would have taken some more time to dive deeper into **API versioning**
+
+- 🔍📈 **Monitoring & Logs** I’d also spend more time exploring additional **monitoring metrics** and refining a **meaningful logging approach**. Good Monitoring and logging helps in understanding system health and debugging issues faster.
 

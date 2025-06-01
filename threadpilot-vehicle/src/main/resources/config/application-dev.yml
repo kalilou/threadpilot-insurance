@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/vehicledb
+    url: jdbc:postgresql://localhost:5433/vehicledb
     driverClassName: org.postgresql.Driver
     username: threadpilot
     password: threadpilot
@@ -14,14 +14,3 @@ spring:
 
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
-
-togglz:
-  enabled: true
-  console:
-    enabled: true
-    path: /togglz-console
-  features:
-    FOO:
-      enabled: false
-    BAR:
-      enabled: true
