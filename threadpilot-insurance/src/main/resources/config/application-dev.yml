@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5434/insurancedb
+    driverClassName: org.postgresql.Driver
+    username: threadpilot
+    password: threadpilot
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+logging:
+  level:
+    root: "info"
+    org:
+      springframework:
+        web: "debug"
+      hibernate: "error"
+
+togglz:
+  console:
+    enabled: true
+    path: /togglz-console
+    secured: false
+  feature-enums:
+    - com.threadpilot.insurance.config.Features
+
+vehicle:
+  service:
+    base-url: http://localhost:8081/api/vehicles/owner/

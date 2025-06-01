@@ -1,0 +1,83 @@
+name: Test Insurance Service
+run-name: ${{ github.actor }} triggered test ${{ github.ref_name }} (${{ github.event.pull_request.base.ref }})
+
+on:
+  pull_request:
+    branches:
+      - main
+      - staging
+      - testing
+  push:
+    branches:
+      - main
+      - staging
+      - testing
+
+concurrency:
+  group: ${{ github.workflow }}/${{ github.head_ref || github.ref_name || github.ref }}
+  cancel-in-progress: true
+
+
+jobs:
+  notification-start:
+    name:  Notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notification
+        run: echo "Notification important when pipeline is started"
+
+  sonar-analysis:
+    name: Sonar analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: perform static analysis
+        run: echo "Perform static analysis"
+
+  insurance-build:
+    needs:
+      - notification-start
+      - sonar-analysis
+    uses: ./.github/workflows/gradle.yml
+    with:
+      project_name: threadpilot-insurance
+      java_version: "21"
+
+  vehicle-build:
+    needs:
+      - notification-start
+      - sonar-analysis
+    uses: ./.github/workflows/gradle.yml
+    with:
+      project_name: threadpilot-vehicle
+      java_version: "21"
+
+  insurance-deploy:
+    if:  ${{ github.ref == 'refs/heads/main' }}
+    name: Insurance-deploy
+    runs-on: ubuntu-latest
+    needs:
+      - insurance-build
+    steps:
+      - name: deploy
+        run: echo "Deploy insurance service"
+
+  vehicle-deploy:
+    if:  ${{ github.ref == 'refs/heads/main' }}
+    name: Vehicle-deploy
+    runs-on: ubuntu-latest
+    needs:
+      - vehicle-build
+    steps:
+      - name: deploy
+        run: echo "Deploy vehicle service"
+
+  notification-end:
+    name: Notification
+    runs-on: ubuntu-latest
+    needs:
+      - insurance-deploy
+      - vehicle-deploy
+    steps:
+      - name: Notification
+        run: echo "Notification important when pipeline is finished"
+

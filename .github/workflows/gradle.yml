@@ -1,0 +1,35 @@
+on:
+  workflow_call:
+    inputs:
+        project_name:
+            required: true
+            type: string
+        java_version:
+            required: true
+            type: string
+
+jobs:
+    build-and-test:
+      name: Build and test
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout Code
+          uses: actions/checkout@v4
+
+        - name: Set up JDK ${{ inputs.java_version }}
+          uses: actions/setup-java@v4
+          with:
+            java-version: ${{ inputs.java_version }}
+            distribution: 'corretto'
+            architecture: x64
+            cache: gradle
+
+        - name: Build with Gradle
+          working-directory: ${{ inputs.project_name }}
+          run: ./gradlew build -x test
+
+        - name: Upload build artifacts
+          uses: actions/upload-artifact@v4
+          with:
+            name: Package
+            path: ${{ inputs.project_name }}/build/reports/tests/test/index.html
